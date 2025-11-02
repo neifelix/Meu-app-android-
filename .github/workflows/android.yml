@@ -19,19 +19,15 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: Debug - List all files
+    - name: Debug - Show everything
       run: |
         echo "=== PASTA ATUAL ==="
         pwd
-        echo "=== ARQUIVOS NA RAIZ ==="
+        echo "=== TODOS OS ARQUIVOS ==="
         ls -la
         echo "=== PROCURANDO GRADLEW ==="
-        find . -name "gradlew" -type f
+        find . -name "gradlew"
         echo "=== ESTRUTURA COMPLETA ==="
-        find . -type f | head -20
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x ./gradlew
-
-    - name: Build with Gradle
-      run: ./gradlew build
+        tree . || find . -type f
+        echo "=== CONTEÚDO DA PASTA APLICATIVO ==="
+        ls -la Aplicativo/ || echo "Pasta Aplicativo não existe"
