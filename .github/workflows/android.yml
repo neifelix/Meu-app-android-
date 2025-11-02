@@ -19,8 +19,14 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
+    - name: List files to debug
+      run: |
+        pwd
+        ls -la
+        find . -name "gradlew" -type f
+
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x ./gradlew
 
     - name: Build with Gradle
       run: ./gradlew build
