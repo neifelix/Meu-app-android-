@@ -19,11 +19,16 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: List files to debug
+    - name: Debug - List all files
       run: |
+        echo "=== PASTA ATUAL ==="
         pwd
+        echo "=== ARQUIVOS NA RAIZ ==="
         ls -la
+        echo "=== PROCURANDO GRADLEW ==="
         find . -name "gradlew" -type f
+        echo "=== ESTRUTURA COMPLETA ==="
+        find . -type f | head -20
 
     - name: Grant execute permission for gradlew
       run: chmod +x ./gradlew
